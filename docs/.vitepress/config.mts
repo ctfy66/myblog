@@ -1,4 +1,65 @@
+import { readdirSync, readFileSync, statSync } from "fs";
+import { join } from "path";
 import { defineConfig } from "vitepress";
+
+// 动态生成侧边栏配置
+function generateSidebar() {
+  const notesDir = join(__dirname, "..", "notes");
+  const sidebar: any[] = [];
+
+  try {
+    // 读取 notes 目录下的所有文件夹
+    const categories = readdirSync(notesDir).filter((item) => {
+      const fullPath = join(notesDir, item);
+      return statSync(fullPath).isDirectory();
+    });
+
+    categories.sort();
+
+    categories.forEach((category) => {
+      const categoryPath = join(notesDir, category);
+      const files = readdirSync(categoryPath)
+        .filter((file) => file.endsWith(".md") && file !== "index.md")
+        .sort();
+
+      if (files.length === 0) return;
+
+      const items = files.map((file) => {
+        const filePath = join(categoryPath, file);
+        const filename = file.replace(/\.md$/, "");
+
+        // 尝试从文件中提取标题
+        let title = filename;
+        try {
+          const content = readFileSync(filePath, "utf-8");
+          const match = content.match(/^#\s+(.+)$/m);
+          if (match) title = match[1].trim();
+        } catch (err) {}
+
+        return {
+          text: title,
+          link: `/notes/${category}/${filename}`,
+        };
+      });
+
+      // 格式化分类名称
+      const categoryText = category
+        .split(/[-_]/)
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+
+      sidebar.push({
+        text: categoryText,
+        collapsed: false,
+        items: items,
+      });
+    });
+  } catch (err) {
+    console.error("生成侧边栏失败:", err);
+  }
+
+  return sidebar;
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -14,18 +75,7 @@ export default defineConfig({
     ],
 
     sidebar: {
-      "/": [
-        {
-          text: "Leetcode",
-          collapsed: false,
-          items: [
-            {
-              text: "背包问题",
-              link: "/notes/leetcode/背包问题",
-            },
-          ],
-        },
-      ],
+      "/": generateSidebar(),
     },
 
     outline: {
