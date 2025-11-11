@@ -71,7 +71,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "首页", link: "/" },
-      { text: "GitHub", link: "https://github.com/yourusername" },
+      { text: "GitHub", link: "https://github.com/ctfy66" },
     ],
 
     sidebar: {
