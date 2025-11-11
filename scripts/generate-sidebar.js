@@ -137,7 +137,7 @@ function updateConfig(sidebar) {
   }
 
   // 替换 sidebar 配置
-  const sidebarRegex = /sidebar:\s*{[\s\S]*?"\/"\s*:\s*\[[\s\S]*?\],[\s\S]*?},/;
+  const sidebarRegex = /sidebar:\s*\{[\s\S]*?\/\":\s*\[[\s\S]*?\][\s\S]*?\},/;
   const newSidebarConfig = `sidebar: {
       "/": ${sidebarStr},
     },`;
