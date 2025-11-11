@@ -35,7 +35,7 @@
     "Monaco", "Courier New", monospace;
 
   /* 布局 - 增加侧边栏和目录宽度 */
-  --vp-sidebar-width: 320px;
+  --vp-sidebar-width: 380px;
   --vp-layout-max-width: 1440px;
 
   /* 自定义：右侧目录最小宽度 */
@@ -414,24 +414,34 @@ code {
 
 /* ===== 侧边栏宽度和间距优化 ===== */
 
-/* 增加侧边栏宽度 */
+/* 增加侧边栏宽度 - 更激进 */
 @media (min-width: 960px) {
   .VPSidebar {
-    width: 320px !important;
+    width: 380px !important;
   }
   
   .VPContent.has-sidebar {
-    padding-left: 320px !important;
+    padding-left: 380px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .VPSidebar {
+    width: 420px !important;
+  }
+  
+  .VPContent.has-sidebar {
+    padding-left: 420px !important;
   }
 }
 
 @media (min-width: 1440px) {
   .VPSidebar {
-    width: 360px !important;
+    width: 450px !important;
   }
   
   .VPContent.has-sidebar {
-    padding-left: 360px !important;
+    padding-left: 450px !important;
   }
 }
 
