@@ -39,7 +39,7 @@
   --vp-layout-max-width: 1440px;
 
   /* 自定义：右侧目录最小宽度 */
-  --vp-aside-width: 320px;
+  --vp-aside-width: 400px;
 }
 
 .dark {
@@ -428,24 +428,24 @@ code {
 /* 大幅增加右侧目录宽度 */
 @media (min-width: 1280px) {
   .VPDocAside {
-    width: 350px !important;
-    min-width: 350px !important;
+    width: 450px !important;
+    min-width: 450px !important;
     padding-left: 32px !important;
   }
   
   .VPDocAsideOutline {
-    min-width: 300px !important;
+    min-width: 400px !important;
   }
 }
 
 @media (min-width: 1440px) {
   .VPDocAside {
-    width: 400px !important;
-    min-width: 400px !important;
+    width: 500px !important;
+    min-width: 500px !important;
   }
   
   .VPDocAsideOutline {
-    min-width: 350px !important;
+    min-width: 450px !important;
   }
 }
 
@@ -476,17 +476,17 @@ code {
   line-height: 1.5 !important;
 }
 
-/* 右侧目录优化 - 增加宽度 */
+/* 右侧目录优化 - 大幅增加宽度 */
 .VPDocAside {
   padding-left: 32px !important;
   padding-top: 16px !important;
-  width: 320px !important;
-  min-width: 320px !important;
+  width: 400px !important;
+  min-width: 400px !important;
 }
 
 .VPDocAsideOutline {
-  padding: 16px 20px !important;
-  min-width: 280px !important;
+  padding: 16px 24px !important;
+  min-width: 350px !important;
 }
 
 /* 减少目录项间距 */
