@@ -1,0 +1,62 @@
+name: Deploy Blog
+
+# 触发条件：推送到 main 分支
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整历史，用于 lastUpdated
+
+      # 2. 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # 3. 安装依赖
+      - name: Install Dependencies
+        run: npm ci
+
+      # 4. 生成侧边栏
+      - name: Generate Sidebar
+        run: npm run update:sidebar
+
+      # 5. 构建静态网站
+      - name: Build VitePress
+        run: npm run docs:build
+
+      # 6. 部署到服务器
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          SOURCE: "docs/.vitepress/dist/"
+          EXCLUDE: "/node_modules/, /.git/, /.github/"
+
+      # 7. 重启服务（可选）
+      - name: Restart Service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # 如果使用 nginx，重新加载配置
+            sudo nginx -s reload || true
+            # 或者如果使用 PM2 管理静态服务
+            # pm2 restart blog || true

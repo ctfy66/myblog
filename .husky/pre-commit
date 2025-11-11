@@ -1,0 +1,9 @@
+echo "🔄 自动更新侧边栏配置..."
+
+# 生成侧边栏
+node scripts/generate-sidebar.js
+
+# 将生成的配置文件添加到本次提交
+git add docs/.vitepress/config.mts
+
+echo "✅ 侧边栏已自动更新"

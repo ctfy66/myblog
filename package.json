@@ -1,0 +1,33 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Personal blog built with VitePress with automated deployment",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "update:sidebar": "node scripts/generate-sidebar.js",
+    "watch": "node scripts/watch-and-update.js",
+    "dev": "concurrently \"npm run docs:dev\" \"npm run watch\" --names \"VITE,WATCH\" --prefix-colors \"blue,green\"",
+    "fix:notion": "node scripts/fix-notion-files.js",
+    "import": "node scripts/auto-import.js",
+    "clean": "rimraf docs/.vitepress/dist docs/.vitepress/cache",
+    "build:clean": "npm run clean && npm run update:sidebar && npm run docs:build",
+    "deploy:test": "bash server/test-deployment.sh",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "blog",
+    "vitepress",
+    "markdown",
+    "automated-deployment"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.24"
+  }
+}
