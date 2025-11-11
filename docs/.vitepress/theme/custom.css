@@ -160,25 +160,32 @@ code {
   white-space: normal !important;
   overflow: visible !important;
   text-overflow: initial !important;
-  line-height: 1.6;
-  padding: 6px 0;
-  word-break: break-word;
-  font-size: 0.95rem;
-  display: block;
+  line-height: 1.5 !important;
+  padding: 4px 0 !important;
+  word-break: break-word !important;
+  font-size: 0.9rem !important;
+  display: block !important;
+  max-width: 100% !important;
 }
 
 .VPDocOutlineItem {
-  line-height: 1.6;
-  margin: 2px 0;
+  line-height: 1.5 !important;
+  margin: 3px 0 !important;
+}
+
+.VPDocOutlineItem a {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .outline-title {
   white-space: normal !important;
-  word-break: break-word;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--vp-c-text-2);
+  word-break: break-word !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+  color: var(--vp-c-text-2) !important;
 }
 
 /* 标题样式 */
@@ -497,6 +504,13 @@ code {
 
 .VPDocOutlineItem li {
   margin: 0 !important;
+}
+
+.VPDocOutlineItem .outline-link {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
 }
 
 /* 目录标题 */
