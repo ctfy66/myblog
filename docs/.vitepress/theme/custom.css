@@ -35,11 +35,11 @@
     "Monaco", "Courier New", monospace;
 
   /* 布局 - 增加侧边栏和目录宽度 */
-  --vp-sidebar-width: 380px;
+  --vp-sidebar-width: 280px;
   --vp-layout-max-width: 1440px;
 
   /* 自定义：右侧目录最小宽度 */
-  --vp-aside-width: 280px;
+  --vp-aside-width: 320px;
 }
 
 .dark {
@@ -414,34 +414,38 @@ code {
 
 /* ===== 侧边栏宽度和间距优化 ===== */
 
-/* 增加侧边栏宽度 - 更激进 */
+/* 恢复左侧侧边栏默认宽度 */
 @media (min-width: 960px) {
   .VPSidebar {
-    width: 380px !important;
+    width: 280px !important;
   }
   
   .VPContent.has-sidebar {
-    padding-left: 380px !important;
+    padding-left: 280px !important;
   }
 }
 
+/* 大幅增加右侧目录宽度 */
 @media (min-width: 1280px) {
-  .VPSidebar {
-    width: 420px !important;
+  .VPDocAside {
+    width: 350px !important;
+    min-width: 350px !important;
+    padding-left: 32px !important;
   }
   
-  .VPContent.has-sidebar {
-    padding-left: 420px !important;
+  .VPDocAsideOutline {
+    min-width: 300px !important;
   }
 }
 
 @media (min-width: 1440px) {
-  .VPSidebar {
-    width: 450px !important;
+  .VPDocAside {
+    width: 400px !important;
+    min-width: 400px !important;
   }
   
-  .VPContent.has-sidebar {
-    padding-left: 450px !important;
+  .VPDocAsideOutline {
+    min-width: 350px !important;
   }
 }
 
@@ -472,14 +476,17 @@ code {
   line-height: 1.5 !important;
 }
 
-/* 右侧目录优化 */
+/* 右侧目录优化 - 增加宽度 */
 .VPDocAside {
   padding-left: 32px !important;
   padding-top: 16px !important;
+  width: 320px !important;
+  min-width: 320px !important;
 }
 
 .VPDocAsideOutline {
-  padding: 16px !important;
+  padding: 16px 20px !important;
+  min-width: 280px !important;
 }
 
 /* 减少目录项间距 */
