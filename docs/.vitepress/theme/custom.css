@@ -35,7 +35,7 @@
     "Monaco", "Courier New", monospace;
 
   /* 布局 - 增加侧边栏和目录宽度 */
-  --vp-sidebar-width: 280px;
+  --vp-sidebar-width: 320px;
   --vp-layout-max-width: 1440px;
 
   /* 自定义：右侧目录最小宽度 */
@@ -410,4 +410,80 @@ code {
   border: none;
   border-top: 1px solid var(--vp-c-divider);
   margin: 2rem 0;
+}
+
+/* ===== 侧边栏宽度和间距优化 ===== */
+
+/* 增加侧边栏宽度 */
+@media (min-width: 960px) {
+  .VPSidebar {
+    width: 320px !important;
+  }
+  
+  .VPContent.has-sidebar {
+    padding-left: 320px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPSidebar {
+    width: 360px !important;
+  }
+  
+  .VPContent.has-sidebar {
+    padding-left: 360px !important;
+  }
+}
+
+/* 减少侧边栏内部间距 */
+.VPSidebar .content {
+  padding: 16px 20px 24px !important;
+}
+
+/* 减少侧边栏项目间距 */
+.VPSidebarItem {
+  margin: 2px 0 !important;
+}
+
+.VPSidebarItem.level-0 {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+/* 减少分组之间的间距 */
+.group + .group {
+  padding-top: 12px !important;
+  margin-top: 4px !important;
+}
+
+/* 紧凑的链接样式 */
+.VPSidebarItem .link {
+  padding: 6px 12px !important;
+  line-height: 1.5 !important;
+}
+
+/* 右侧目录优化 */
+.VPDocAside {
+  padding-left: 32px !important;
+  padding-top: 16px !important;
+}
+
+.VPDocAsideOutline {
+  padding: 16px !important;
+}
+
+/* 减少目录项间距 */
+.VPDocOutlineItem {
+  padding: 3px 0 !important;
+  line-height: 1.4 !important;
+}
+
+.VPDocOutlineItem li {
+  margin: 0 !important;
+}
+
+/* 目录标题 */
+.outline-title {
+  padding-bottom: 8px !important;
+  margin-bottom: 8px !important;
 }

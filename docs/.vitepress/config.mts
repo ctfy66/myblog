@@ -63,7 +63,7 @@ function generateSidebar() {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "我的博客",
+  title: "Hui的博客",
   description: "个人技术笔记",
   lang: "zh-CN",
 
