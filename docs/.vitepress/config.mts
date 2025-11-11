@@ -16,15 +16,15 @@ export default defineConfig({
     sidebar: {
       "/": [
         {
-          text: 'Leetcode',
+          text: "Leetcode",
           collapsed: false,
           items: [
             {
-              text: '背包问题',
-              link: '/notes/leetcode/背包问题'
-            }
-          ]
-        }
+              text: "背包问题",
+              link: "/notes/leetcode/背包问题",
+            },
+          ],
+        },
       ],
     },
 
