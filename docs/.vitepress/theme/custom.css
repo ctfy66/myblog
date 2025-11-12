@@ -426,7 +426,7 @@ code {
   .VPSidebar {
     width: 280px !important;
   }
-  
+
   .VPContent.has-sidebar {
     padding-left: 280px !important;
   }
@@ -440,7 +440,7 @@ code {
     max-width: 550px !important;
     padding-left: 40px !important;
   }
-  
+
   .VPDocAsideOutline {
     min-width: 500px !important;
     width: 100% !important;
@@ -453,7 +453,7 @@ code {
     min-width: 600px !important;
     max-width: 600px !important;
   }
-  
+
   .VPDocAsideOutline {
     min-width: 550px !important;
     width: 100% !important;
